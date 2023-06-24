@@ -123,11 +123,41 @@ $sql_chitiet = mysqli_query($conn, "SELECT * FROM hanghoa, hinhhh where hanghoa.
                     ?>
                         <div class="product__content-right-name">
                             <h1><?php echo $row_chitiet[1] ?></h1>
-                            <p>Kho: <?php echo $row_chitiet[4] ?></p>
+                            <?php
+                            // Lấy số lượng hàng cần trừ
+                            $quantityToSubtract = 1; // Số lượng hàng cần trừ (trong ví dụ này, trừ đi 1 sản phẩm)
+
+                            // Kiểm tra xem có đủ số lượng hàng trong kho hay không
+                            $sqlCheck = "SELECT SoLuongHang FROM hanghoa WHERE MSHH = '$id'";
+                            $resultCheck = $conn->query($sqlCheck);
+
+                            if ($resultCheck->num_rows > 0) {
+                                $rowCheck = $resultCheck->fetch_assoc();
+                                $currentQuantity = $rowCheck["SoLuongHang"];
+
+                                if ($currentQuantity >= $quantityToSubtract) {
+                                    // Cập nhật số lượng hàng mới trong kho
+                                    $newQuantity = $currentQuantity - $quantityToSubtract;
+                                    $sqlUpdate = "UPDATE hanghoa SET SoLuongHang = $newQuantity WHERE MSHH = '$id'";
+
+                                    if ($conn->query($sqlUpdate) === TRUE) {
+                            ?>
+                                        <p>Kho: <?php echo $row_chitiet[4] ?></p>
+                            <?php
+                                    } else {
+                                        echo "Lỗi cập nhật số lượng hàng: " . $conn->error;
+                                    }
+                                } else {
+                                    echo "Không đủ hàng trong kho.";
+                                }
+                            } else {
+                                echo "Không tìm thấy sản phẩm trong kho.";
+                            }
+                            ?>
                         </div>
                         <div class="product__content-right-price">
-                            <span class="product__content-right-price--old"><?php echo number_format($row_chitiet[3] * 100 / 90,0,',','.') ?><b>&#8363;</b></span>
-                            <span class="product__content-right-price--current"><?php echo number_format($row_chitiet[3],0,',','.') ?><b>&#8363;</b></span>
+                            <span class="product__content-right-price--old"><?php echo number_format($row_chitiet[3] * 100 / 90, 0, ',', '.') ?><b>&#8363;</b></span>
+                            <span class="product__content-right-price--current"><?php echo number_format($row_chitiet[3], 0, ',', '.') ?><b>&#8363;</b></span>
                         </div>
                     <?php
                     }
