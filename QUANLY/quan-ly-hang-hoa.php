@@ -255,7 +255,10 @@ if (isset($_POST['upHangHoa'])) {
                                                         <td><?php echo $row_spHH['SoLuongHang'] ?></td>
                                                         <td><?php echo $row_spHH['GhiChu'] ?></td>
                                                         <td>
-                                                            <a class="icon_delete" href="?xoa=<?php echo $row_spHH['MaHinh'] ?>"><i class="fas fa-trash"></i></a> | <a class="text_update" href="?capnhat=<?php echo $row_spHH['MaHinh'] ?>">Cập nhật</a>
+                                                            <div class="td_actions">
+                                                                <a class="actions" href="?capnhat=<?php echo $row_spHH['MaHinh'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>|
+                                                                <a class="actions" href="?xoa=<?php echo $row_spHH['MaHinh'] ?>"><i class="fa-solid fa-trash"></i></a>
+                                                            </div>
                                                         </td>
                                                         </tr=>
                                                     <?php

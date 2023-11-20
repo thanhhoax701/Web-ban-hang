@@ -418,6 +418,7 @@ VALUES
 --
 CREATE TABLE `nhanvien` (
   `MSNV` int(11) NOT NULL,
+  `Username` varchar(50) DEFAULT NULL,
   `HoTenNV` varchar(50) DEFAULT NULL,
   `Password` varchar(32) DEFAULT NULL,
   `ChucVu` varchar(20) DEFAULT NULL,
@@ -431,6 +432,7 @@ CREATE TABLE `nhanvien` (
 INSERT INTO
   `nhanvien` (
     `MSNV`,
+    `Username`,
     `HoTenNV`,
     `Password`,
     `ChucVu`,
@@ -440,6 +442,7 @@ INSERT INTO
 VALUES
   (
     1,
+    'admin',
     'Trần Thanh Hòa',
     'c4ca4238a0b923820dcc509a6f75849b',
     'Quản Trị',
@@ -448,6 +451,7 @@ VALUES
   ),
   (
     2,
+    'admin',
     'Đặng Quốc Đạt',
     'c4ca4238a0b923820dcc509a6f75849b',
     'Giám Đốc',

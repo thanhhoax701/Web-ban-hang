@@ -17,20 +17,24 @@ elseif (!isset($_SESSION['signin'])) {
 <?php
 //thêm nhân viên
 if (isset($_POST['addNhanVien'])) {
+  $username = $_POST['username'];
   $hoTen = $_POST['hoTen'];
   $chucVu = $_POST['chucVu'];
   $diaChi = $_POST['diaChi'];
   $sdt = $_POST['sdt'];
-  $sql_insert_product = mysqli_query($conn, "INSERT INTO nhanvien (HoTenNV, ChucVu, DiaChi, SoDienThoai) values ('$hoTen','$chucVu','$diaChi','$sdt')");
+  $sql_insert_product = mysqli_query($conn, "INSERT INTO nhanvien (Username, HoTenNV, ChucVu, DiaChi, SoDienThoai) values ('$username', '$hoTen','$chucVu','$diaChi','$sdt')");
 } elseif (isset($_POST['upnhanvien'])) {
 
   $id_update = $_POST['msnv'];
+  $username = $_POST['username'];
   $hoten = $_POST['hoTen'];
   $chucvu = $_POST['chucVu'];
   $diachi = $_POST['diaChi'];
   $sodienthoai = $_POST['sdt'];
 
-  $sql_update_nhanvien = mysqli_query($conn, "UPDATE nhanvien SET HoTenNV='$hoten', ChucVu='$chucvu', DiaChi='$diachi', SoDienThoai='$sodienthoai' WHERE MSNV= '$id_update'");
+  $sql_update_nhanvien = mysqli_query($conn, "UPDATE nhanvien SET Username='$username', HoTenNV='$hoten', ChucVu='$chucvu', DiaChi='$diachi', SoDienThoai='$sodienthoai' WHERE MSNV= '$id_update'");
+  // Gọi hàm JavaScript sau khi cập nhật thành công
+  echo '<script>hideFormAndShowAlert();</script>';
 }
 ?>
 
@@ -179,6 +183,7 @@ if (isset($_GET['xoa'])) {
                       <thead style="text-align: center;">
                         <tr style="font-weight: bold; color: blue;">
                           <th>MSNV</th>
+                          <th>Username</th>
                           <th>Họ Tên Nhân Viên</th>
                           <th>Chức Vụ</th>
                           <th>Địa Chỉ</th>
@@ -194,12 +199,16 @@ if (isset($_GET['xoa'])) {
                         ?>
                           <tr>
                             <td><?php echo $row_sp['MSNV'] ?></td>
+                            <td><?php echo $row_sp['Username'] ?></td>
                             <td><?php echo $row_sp['HoTenNV'] ?></td>
                             <td><?php echo $row_sp['ChucVu'] ?></td>
                             <td><?php echo $row_sp['DiaChi'] ?></td>
                             <td><?php echo $row_sp['SoDienThoai'] ?></td>
-                            <td style="display: flex; justify-content: space-around;">
-                              <a class="icon_delete" href="?xoa=<?php echo $row_sp['MSNV'] ?>"><i class="fas fa-trash"></i></a> | <a class="text_update" href="?capnhat=<?php echo $row_sp['MSNV'] ?>">Cập nhật</a>
+                            <td>
+                              <div class="td_actions">
+                                <a class="actions" href="?capnhat=<?php echo $row_sp['MSNV'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>|
+                                <a class="actions" href="?xoa=<?php echo $row_sp['MSNV'] ?>"><i class="fa-solid fa-trash"></i></a>
+                              </div>
                             </td>
                             </tr=>
                           <?php
@@ -218,6 +227,10 @@ if (isset($_GET['xoa'])) {
                   <!-- Bảng sửa nhân viên -->
                   <div class="demo" style="margin: 10px;">
                     <form action="" method="POST" class="form_">
+                      <div class="form-input">
+                        <label for="">Username </label>
+                        <input name="username" type="text" value="<?php echo $row_capnhat['Username'] ?>"><br>
+                      </div>
                       <div class="form-input">
                         <label for="">Họ tên NV </label>
                         <input name="hoTen" type="text" value="<?php echo $row_capnhat['HoTenNV'] ?>"><br>
@@ -240,6 +253,14 @@ if (isset($_GET['xoa'])) {
                         <input type="submit" value="Cập Nhật" name="upnhanvien">
                       </div>
                     </form>
+                    <script>
+                      function hideFormAndShowAlert() {
+                        // Ẩn form
+                        document.querySelector('.demo').style.display = 'none';
+                        // Hiển thị thông báo
+                        alert('Cập nhật thành công');
+                      }
+                    </script>
                   </div>
                 <?php
                 } else {
@@ -251,6 +272,10 @@ if (isset($_GET['xoa'])) {
                     </label>
                     <input id="checkcontact" type="checkbox">
                     <form action="" method="POST" class="form">
+                      <div class="form-input">
+                        <label for="">Username </label>
+                        <input name="username" type="text"><br>
+                      </div>
                       <div class="form-input">
                         <label for="">Họ tên NV </label>
                         <input name="hoTen" type="text"><br>

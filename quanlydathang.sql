@@ -10,6 +10,7 @@ create table KhachHang(
 
 create table NhanVien(
     MSNV int primary key AUTO_INCREMENT,
+    Username varchar(50),
     HoTenNV varchar(50),
     Password varchar(32),
     ChucVu varchar(20),

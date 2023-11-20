@@ -1,24 +1,21 @@
 <?php
 session_start();
 include '../TONGQUAT/config.php';
-if (isset($_POST['signin'])) {
-  $signin = $_POST['signin'];
-  $username = $_POST["username"];
-  $password = md5($_POST["password"]);
-  // $password = $_POST["password"];
 
-  // chỉ in ra 1 hàng
-  $sql = mysqli_query($conn, "SELECT * FROM nhanvien WHERE HoTenNV= '$username' AND Password= '$password' LIMIT 1");
-  // echo (json_encode($sql));
-  // die();
-  $count = mysqli_num_rows($sql);
-  if ($count > 0) {
-    $_SESSION['signin'] = $username;
-    header("location:quan-ly-nhan-vien.php");
-  } else {
-    echo '<script type="text/javascript">alert("Vui lòng điền đầy đủ thông tin")</script>';
-    // header("location:index.php");
-  }
+if (isset($_POST['signin'])) {
+    $username = $_POST["username"];
+    $password = md5($_POST["password"]);
+
+    $sql = "SELECT * FROM nhanvien WHERE Username = '$username' AND Password = '$password' LIMIT 1";
+    $result = mysqli_query($conn, $sql);
+    $count = mysqli_num_rows($result);
+
+    if ($count > 0) {
+        $_SESSION['signin'] = $username;
+        header("location: quan-ly-nhan-vien.php");
+    } else {
+        echo '<script type="text/javascript">alert("Tên đăng nhập hoặc mật khẩu không đúng")</script>';
+    }
 }
 ?>
 
@@ -57,7 +54,7 @@ if (isset($_POST['signin'])) {
               <h6 class="fw-light">Đăng nhập để tiếp tục.</h6>
               <form method="POST" class="pt-3">
                 <div class="form-group">
-                  <input type="text" name="username" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Tên đăng nhập">
+                  <input type="text" name="username" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Tên người dùng">
                 </div>
                 <div class="form-group">
                   <input type="password" name="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Mật khẩu">

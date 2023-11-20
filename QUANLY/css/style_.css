@@ -36,25 +36,22 @@
     text-align: center;
 }
 
-.icon_delete {
-    color: #f00;
-    transition: all 0.3s ease-in-out;
+.td_actions {
+    display: flex; 
+    justify-content: space-around;
+    align-items: center;
 }
 
-.icon_delete:hover {
-    color: #ee4545;
-}
-
-.text_update {
-    transition: all 0.5s linear;
+.actions {
+    transition: all 0.2s linear;
     text-decoration: none;
-    color: #f00;
+    color: #000;
 }
 
-.text_update:hover {
+.actions:hover {
+    color: #f00;
     text-decoration: underline;
 }
-
 
 /* Form Thêm, Sửa Nhân Viên */
 
