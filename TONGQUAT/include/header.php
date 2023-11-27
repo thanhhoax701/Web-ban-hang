@@ -70,10 +70,13 @@ include '../TONGQUAT/config.php';
                     $sql = mysqli_query($conn, "SELECT * FROM khachhang WHERE MSKH='$id' ");
                     $row = mysqli_fetch_array($sql); ?>
                     <li class="header__navbar-item header__navbar-item--separate">
-                        <a href="../../KHACHHANG/index.php"><span style="color: #000; font-weight: bold; font-family: monospace;" id="header-hover" class="header__navbar-icon-link header__navbar-icon-link2">Hello!
+                        <a href="../../KHACHHANG/index.php">
+                            <span style="color: #000; font-weight: bold; font-family: monospace;" id="header-hover" class="header__navbar-icon-link header__navbar-icon-link2">Hello!
                                 <?php if (isset($_SESSION['submit'])) {
                                     echo $_SESSION['submit'];
-                                } ?></span></a>
+                                } ?>
+                            </span>
+                        </a>
                     </li>
                     <li class="header__navbar-item">
                         <a href="?login=dangxuat"><span id="header-hover" class="header__navbar-icon-link" title="Sign-out">Đăng xuất</span></a>
