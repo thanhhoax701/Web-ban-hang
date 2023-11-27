@@ -1,10 +1,10 @@
 <?php
 session_start();
 include '../TONGQUAT/config.php';
+// Sign in Facebook
+require '../TONGQUAT/vendor/autoload.php';
 ?>
 <?php
-// session_destroy();
-// unset('dangnhap');
 if (isset($_POST['submit'])) {
     $msg_success = 'Xin vui lòng điền đầy đủ tên tài khoản và mật khẩu';
     $msg_error = 'Bạn đã nhập sai tài khoản hoặc mật khẩu';
@@ -63,12 +63,12 @@ if (isset($_POST['submit'])) {
                     <form action="" method="POST" class="form" id="form-2">
                         <div class="form-inner">
                             <div class="form-group">
-                                <label for="phone" class="required">Số điện thoại của bạn</label>
-                                <input class="auth-from__input" type="number" name="phone" id="phone" placeholder="070xxx9544" />
+                                <label for="phone" class="required">Số điện thoại</label>
+                                <input class="auth-from__input" type="text" name="phone" id="phone" placeholder="070xxx9544" />
                                 <span class="form-message"></span>
                             </div>
                             <div class="form-group">
-                                <label for="password3" id="password-normal" class="required">Mật khẩu của bạn</label>
+                                <label for="password3" id="password-normal" class="required">Mật khẩu</label>
                                 <input class="auth-from__input" type="password" name="password" id="password3" placeholder="Mật khẩu của bạn" />
                                 <i class="fas fa-eye" aria-hidden="true" type="button" id="eye3"></i>
                                 <span class="form-message"></span>
@@ -80,7 +80,7 @@ if (isset($_POST['submit'])) {
                         </div>
                         <div class="auth-form__help">
                             <div class="auth-form__help-email">
-                                <a class="auth-form__help--forgot-password" href="#">Forgot password?</a>
+                                <a class="auth-form__help--forgot-password" href="#">Quên mật khẩu?</a>
                             </div>
                         </div>
                         <input type="submit" class="form-submit" name="submit" value="Đăng nhập"></input>
@@ -88,28 +88,61 @@ if (isset($_POST['submit'])) {
                 </div>
                 <div class="right">
                     <ul>
-                        <li class="facebook">
-                            <a href="#">
+                        <?php
+                        $fb = new Facebook\Facebook([
+                            'app_id' => '306351439064429',
+                            'app_secret' => 'aef7d41638a94266759cd1c70ffb0bdd',
+                            'default_graph_version' => 'v12.0',
+                        ]);
+
+                        $helper = $fb->getRedirectLoginHelper();
+
+                        try {
+                            $accessToken = $helper->getAccessToken();
+                        } catch (Facebook\Exceptions\FacebookResponseException $e) {
+                            echo 'Graph returned an error: ' . $e->getMessage();
+                            exit;
+                        } catch (Facebook\Exceptions\FacebookSDKException $e) {
+                            echo 'Facebook SDK returned an error: ' . $e->getMessage();
+                            exit;
+                        }
+
+                        if (isset($accessToken)) {
+                            $fb->setDefaultAccessToken($accessToken);
+
+                            try {
+                                $response = $fb->get('/me?fields=email,name');
+                                $userNode = $response->getGraphUser();
+                            } catch (Facebook\Exceptions\FacebookResponseException $e) {
+                                echo 'Graph returned an error: ' . $e->getMessage();
+                                exit;
+                            } catch (Facebook\Exceptions\FacebookSDKException $e) {
+                                echo 'Facebook SDK returned an error: ' . $e->getMessage();
+                                exit;
+                            }
+                        } else {
+                            $permissions = ['email'];
+                            $loginUrl = $helper->getLoginUrl('http://localhost/web-ban-hang/KHACHHANG/fb_callback.php', $permissions);
+                            echo '<li class="facebook">
+                            <a href="' . htmlspecialchars($loginUrl) . '">
                                 <i class="fab fa-facebook-square"></i>
-                                <span>Connect with facebook</span>
+                                <span>Đăng nhập với Facebook</span>
                             </a>
-                        </li>
-                        <li class="twitter">
-                            <a href="#">
-                                <i class="fab fa-twitter-square"></i>
-                                <span>Connect with twitter</span>
-                            </a>
+                        </li>';
+                        }
+
+                        ?>
                         </li>
                         <li class="google">
                             <a href="#">
                                 <i class="fab fa-google"></i>
-                                <span>Connect with google</span>
+                                <span>Đăng nhập với Google</span>
                             </a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <p class="member">Bạn chưa có tài khoản? <a href="./dang-ky.php" class="link">Register now</a></p>
+            <p class="member">Bạn chưa có tài khoản? <a href="./dang-ky.php" class="link">Đăng ký ngay</a></p>
 
             <!-- Forgot password -->
             <div class="forgot-password modal__body">
@@ -182,7 +215,6 @@ if (isset($_POST['submit'])) {
             showForgotPassword.style.display = 'none'
         })
     </script>
-    <!-- <script src="./assets/javascript/signUp-signIn.js"></script> -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             Validator({

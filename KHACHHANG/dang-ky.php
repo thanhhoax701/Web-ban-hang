@@ -5,17 +5,6 @@ include '../TONGQUAT/config.php';
 <?php
 // session_destroy();
 if (isset($_POST['submit'])) {
-    // $hoTen = $_POST['fullname'];
-    // $pass = md5($_POST['password']);
-    // $diaChi = $_POST['address'];
-    // $sdt = $_POST['phone'];
-    // $sql_insert_product = mysqli_query($conn, "INSERT INTO khachhang (HoTenKH, Password, DiaChi, SoDienThoai) values ('$hoTen', '$pass', '$diaChi', '$sdt')");
-    // if ($sql_insert_product) {
-    //     echo "<script>alert('Đã đăng ký thành công')</script>";
-    //     // header('location:dang-nhap.php');
-    //     $_SESSION['submit'] = $hoTen;
-    //     $_SESSION['id_khachhang'] = mysqli_insert_id($conn);
-    // }
     $msg_success = 'Xin vui lòng điền đầy đủ thông tin';
     $hoTen = $_POST['fullname'];
     $pass = md5($_POST['password']);
@@ -75,7 +64,7 @@ if (isset($_POST['submit'])) {
                             <span class="form-message"></span>
                         </div>
                         <div class="form-group">
-                            <label for="password" id="password-normal" class="required">Mật khẩu của bạn</label>
+                            <label for="password" id="password-normal" class="required">Mật khẩu</label>
                             <input class="auth-from__input" type="password" name="password" id="password" placeholder="Mật khẩu của bạn" />
                             <i class="fas fa-eye" aria-hidden="true" type="button" id="eye1"></i>
                             <p id="message">Password is <span id="strenght"></span></p>
@@ -116,25 +105,19 @@ if (isset($_POST['submit'])) {
                         <li class="facebook">
                             <a href="#">
                                 <i class="fab fa-facebook-square"></i>
-                                <span>Connect with Facebook</span>
-                            </a>
-                        </li>
-                        <li class="twitter">
-                            <a href="#">
-                                <i class="fab fa-twitter-square"></i>
-                                <span>Connect with Twitter</span>
+                                <span>Đăng nhập với Facebook</span>
                             </a>
                         </li>
                         <li class="google">
                             <a href="#">
                                 <i class="fab fa-google"></i>
-                                <span>Connect with Google</span>
+                                <span>Đăng nhập với Google</span>
                             </a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <p class="member">Bạn có phải là thành viên? <a href="./dang-nhap.php" class="link">Login now</a></p>
+            <p class="member">Bạn có phải là thành viên? <a href="./dang-nhap.php" class="link">Đăng nhập</a></p>
         </div>
     </div>
 

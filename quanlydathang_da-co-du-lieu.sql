@@ -375,7 +375,8 @@ CREATE TABLE `khachhang` (
   `HoTenKH` varchar(50) DEFAULT NULL,
   `Password` varchar(32) DEFAULT NULL,
   `DiaChi` varchar(200) DEFAULT NULL,
-  `SoDienThoai` varchar(10) DEFAULT NULL
+  `SoDienThoai` varchar(10) DEFAULT NULL,
+  `facebook_id` varchar(10) DEFAULT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 --
@@ -387,7 +388,8 @@ INSERT INTO
     `HoTenKH`,
     `Password`,
     `DiaChi`,
-    `SoDienThoai`
+    `SoDienThoai`,
+    `facebook_id`
   )
 VALUES
   (
@@ -395,21 +397,24 @@ VALUES
     'Trần Thanh Hoà',
     'c4ca4238a0b923820dcc509a6f75849b',
     '250/8A, Tầm Vu, Hưng Lợi, Ninh Kiều, Cần Thơ',
-    '0706839544'
+    '0706839544',
+    ''
   ),
   (
     2,
     'Trần Dần',
     'c4ca4238a0b923820dcc509a6f75849b',
     'Đường Ngô Đức Kế, phường Bến Nghé, quận 1, thành phố Hồ Chí Minh',
-    '0701239544'
+    '0701239544',
+    ''
   ),
   (
     3,
     'Lê Thị Lài',
     'c4ca4238a0b923820dcc509a6f75849b',
     'Đường 3/2, Phường Xuân Khánh, Quận Ninh Kiều, Thành phố Cần Thơ.',
-    '0703339544'
+    '0703339544',
+    ''
   );
 
 -- --------------------------------------------------------
