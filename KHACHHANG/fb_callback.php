@@ -1,39 +1,56 @@
 <?php
-
-use Facebook\Authentication\OAuth2Client;
-
 include '../TONGQUAT/config.php';
 // Sign in Facebook
-include '../TONGQUAT/config_facebook.php';
 
+if (isset($_REQUEST['code'])) {
+    header('Location: fb_callback.php');
+}
+
+############ Set Fb access token ############
+if (isset($_SESSION['fb_token'])) {
+    $facebook->setDefaultAccessToken($_SESSION['fb_token']);
+} else {
+    $_SESSION['fb_token'] = (string) $accessToken;
+    $oAuth2Client = $facebook->getOAuth2Client();
+    $longLivedAccessToken = $oAuth2Client->getLongLivedAccessToken($_SESSION['fb_token']);
+    $_SESSION['fb_token'] = (string) $longLivedAccessToken;
+    $facebook->setDefaultAccessToken($_SESSION['fb_token']);
+}
+
+############ Fetch data from graph api  ############
 try {
-    $accessToken = $helper->getAccessToken();
+    $profileRequest = $facebook->get('/me?fields=name,first_name,last_name,email,link,gender,locale,birthday,cover,picture.type(large)');
+    $fbuserData = $profileRequest->getGraphNode()->asArray();
 } catch (Facebook\Exceptions\FacebookResponseException $e) {
     echo 'Lỗi Graph: ' . $e->getMessage();
+    session_destroy();
     exit;
 } catch (Facebook\Exceptions\FacebookSDKException $e) {
     echo 'Lỗi SDK của Facebook: ' . $e->getMessage();
+    session_destroy();
     exit;
 }
 
-if (!isset($accessToken)) {
-    header('Location: dang-nhap.php'); // Chuyển hướng về trang chủ nếu không có AccessToken
-    exit;
+############ Store data in database  ############
+$oauthpro = "facebook";
+$oauthid = $fbuserData['id'] ?? '';
+$f_name = $fbuserData['first_name'] ?? '';
+$l_name = $fbuserData['last_name'] ?? '';
+$gender = $fbuserData['gender'] ?? '';
+$email_id = $fbuserData['email'] ?? '';
+$locale = $fbuserData['locale'] ?? '';
+$cover = $fbuserData['cover']['source'] ?? '';
+$picture = $fbuserData['picture']['url'] ?? '';
+$url = $fbuserData['link'] ?? '';
+$sql = "SELECT * FROM usersdata WHERE oauthid='" . $fbuserData['id'] . "'";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    $conn->query("update usersdata set f_name='" . $f_name . "', l_name='" . $l_name . "', email_id='" . $email_id . "', gender='" . $gender . "', locale='" . $locale . "', cover='" . $cover . "', picture='" . $picture . "', url='" . $url . "' where oauthid='" . $oauthid . "' ");
+} else {
+    $conn->query("INSERT INTO usersdata (oauth_pro, oauthid, f_name, l_name, email_id, gender, locale, cover, picture, url) VALUES ('" . $oauthpro . "', '" . $oauthid . "', '" . $f_name . "', '" . $l_name . "', '" . $email_id . "', '" . $gender . "', '" . $locale . "', '" . $cover . "', '" . $picture . "', '" . $url . "')");
 }
-try {
-    // Get the user's profile
-    $response = $fb->get('/me?fields=id,name,email', $accessToken);
-    $user = $response->getGraphUser();
-    $userId = $user->getId();
-    $userName = $user->getName();
-    echo 'ID: ' . $userId . '<br>';
-    echo 'Username: ' . $userName . '<br>';
-} catch (Facebook\Exceptions\FacebookResponseException $e) {
-    echo 'Graph returned an error: ' . $e->getMessage();
-    exit;
-} catch (Facebook\Exceptions\FacebookSDKException $e) {
-    echo 'Facebook SDK returned an error: ' . $e->getMessage();
-    exit;
-}
+$res = $conn->query($sql);
+$userData = $res->fetch_assoc();
 
-// Chưa xài file này
+$_SESSION['userData'] = $userData;
+header("Location: index.php");

@@ -1,6 +1,7 @@
 <?php
-// session_start();
 require '../TONGQUAT/vendor/autoload.php';
+
+$token = "";
 
 $fb = new Facebook\Facebook([
     'app_id' => '306351439064429',

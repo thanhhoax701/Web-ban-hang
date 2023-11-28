@@ -2,7 +2,10 @@
 session_start();
 include '../TONGQUAT/config.php';
 // Sign in Facebook
-include '../TONGQUAT/config_facebook.php';
+if(isset($_SESSION['userData'])){
+	header('location: dang-nhap.php');
+}
+$loginURL = $helper->getLoginUrl('http://localhost/web-ban-hang/KHACHHANG/fb_callback.php', $fbPermissions);
 ?>
 <?php
 if (isset($_POST['submit'])) {
@@ -88,45 +91,12 @@ if (isset($_POST['submit'])) {
                 </div>
                 <div class="right">
                     <ul>
-                        <?php
-                        if (isset($accessToken)) {
-                            if (isset($_SESSION['facebook_access_token'])) {
-                                $fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
-                            } else {
-                                $_SESSION['facebook_access_token'] = (string) $accessToken;
-                                $oAuth2Client = $fb->getOAuth2Client();
-                                $longLivedAccessToken = $oAuth2Client->getLongLivedAccessToken($_SESSION['facebook_access_token']);
-                                $_SESSION['facebook_access_token'] = (string) $longLivedAccessToken;
-                                $fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
-                            }
-                            try {
-                                $profile_request = $fb->get('/me?fields=name');
-                                $profile = $profile_request->getGraphUser();
-
-                                $fbid = $profile->getId();           // To Get Facebook ID
-                                $fbfullname = $profile->getName();   // To Get Facebook full name
-
-                                # save the user nformation in session variable
-                                $_SESSION['fb_id'] = $fbid . '</br>';
-                                $_SESSION['fb_name'] = $fbfullname . '</br>';
-                            } catch (Facebook\Exceptions\FacebookResponseException $e) {
-                                echo 'Graph returned an error: ' . $e->getMessage();
-                                session_destroy();
-                                exit;
-                            } catch (Facebook\Exceptions\FacebookSDKException $e) {
-                                echo 'Facebook SDK returned an error: ' . $e->getMessage();
-                                exit;
-                            }
-                        } else {
-                            $loginUrl = $helper->getLoginUrl('http://localhost/web-ban-hang/KHACHHANG/dang-nhap.php', $permissions);
-                            echo '<li class="facebook">
-                            <a href="' . htmlspecialchars($loginUrl) . '">
+                        <li class="facebook">
+                            <a href="<?= htmlspecialchars($loginUrl); ?>">
                                 <i class="fab fa-facebook-square"></i>
                                 <span>Đăng nhập với Facebook</span>
                             </a>
-                        </li>';
-                        }
-                        ?>
+                        </li>
                         </li>
                         <li class="google">
                             <a href="#">
@@ -137,15 +107,9 @@ if (isset($_POST['submit'])) {
                     </ul>
                 </div>
             </div>
+            
             <p class="member">Bạn chưa có tài khoản? <a href="./dang-ky.php" class="link">Đăng ký ngay</a></p>
 
-            <?php if (isset($_SESSION['fb_id'])) { ?>
-                <div class="container">
-                    <div class="jumbotron">
-                        <h1>Hello <?php echo $_SESSION['fb_name']; ?></h1>
-                    </div>
-                </div>
-            <?php } ?>
             <!-- Forgot password -->
             <div class="forgot-password modal__body">
                 <div class="modal__overlay"></div>
