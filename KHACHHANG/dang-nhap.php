@@ -1,11 +1,7 @@
 <?php
 session_start();
 include '../TONGQUAT/config.php';
-// Sign in Facebook
-if(isset($_SESSION['userData'])){
-	header('location: dang-nhap.php');
-}
-$loginURL = $helper->getLoginUrl('http://localhost/web-ban-hang/KHACHHANG/fb_callback.php', $fbPermissions);
+include '../TONGQUAT/fb_config.php';
 ?>
 <?php
 if (isset($_POST['submit'])) {
@@ -91,12 +87,16 @@ if (isset($_POST['submit'])) {
                 </div>
                 <div class="right">
                     <ul>
-                        <li class="facebook">
-                            <a href="<?= htmlspecialchars($loginUrl); ?>">
-                                <i class="fab fa-facebook-square"></i>
-                                <span>Đăng nhập với Facebook</span>
-                            </a>
-                        </li>
+                        <?php
+                        $permissions = ['email'];
+                        $loginUrl = $helper->getLoginUrl('http://localhost/web-ban-hang/KHACHHANG/fb_callback.php', $permissions);
+                        echo '<li class="facebook">
+                                    <a href="' . htmlspecialchars($loginUrl) . '">
+                                        <i class="fab fa-facebook-square"></i>
+                                        <span>Đăng nhập với Facebook</span>
+                                    </a>
+                                </li>';
+                        ?>
                         </li>
                         <li class="google">
                             <a href="#">
@@ -107,7 +107,7 @@ if (isset($_POST['submit'])) {
                     </ul>
                 </div>
             </div>
-            
+
             <p class="member">Bạn chưa có tài khoản? <a href="./dang-ky.php" class="link">Đăng ký ngay</a></p>
 
             <!-- Forgot password -->

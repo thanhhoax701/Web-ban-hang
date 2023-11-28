@@ -1,5 +1,6 @@
 <?php
 include '../TONGQUAT/config.php';
+include '../TONGQUAT/fb_config.php';
 ?>
 
 
@@ -65,10 +66,26 @@ include '../TONGQUAT/config.php';
                     </ul>
                 </li>
                 <?php
-                if (isset($_SESSION['MSKH'])) {
+                if (isset($_SESSION['facebook_access_token'])) {
+                ?>
+                    <li class="header__navbar-item header__navbar-item--separate">
+                        <a href="../../KHACHHANG/index.php">
+                            <span style="color: #000; font-weight: bold; font-family: monospace;" id="header-hover" class="header__navbar-icon-link header__navbar-icon-link2">Hello!
+                                <?php if (isset($_SESSION['facebook_user_name'])) {
+                                    echo $_SESSION['facebook_user_name'];
+                                } ?>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="header__navbar-item">
+                        <a href="?login=dangxuat"><span id="header-hover" class="header__navbar-icon-link" title="Sign-out">Đăng xuất</span></a>
+                    </li>
+                <?php
+                } elseif (isset($_SESSION['MSKH'])) {
                     $id = $_SESSION['MSKH'];
                     $sql = mysqli_query($conn, "SELECT * FROM khachhang WHERE MSKH='$id' ");
-                    $row = mysqli_fetch_array($sql); ?>
+                    $row = mysqli_fetch_array($sql);
+                ?>
                     <li class="header__navbar-item header__navbar-item--separate">
                         <a href="../../KHACHHANG/index.php">
                             <span style="color: #000; font-weight: bold; font-family: monospace;" id="header-hover" class="header__navbar-icon-link header__navbar-icon-link2">Hello!
