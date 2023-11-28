@@ -376,7 +376,7 @@ CREATE TABLE `khachhang` (
   `Password` varchar(32) DEFAULT NULL,
   `DiaChi` varchar(200) DEFAULT NULL,
   `SoDienThoai` varchar(10) DEFAULT NULL,
-  `facebook_id` varchar(10) DEFAULT NULL
+  `facebook_user_id` varchar(50) DEFAULT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 --
@@ -389,7 +389,7 @@ INSERT INTO
     `Password`,
     `DiaChi`,
     `SoDienThoai`,
-    `facebook_id`
+    `facebook_user_id`
   )
 VALUES
   (

@@ -5,7 +5,8 @@ create table KhachHang(
     HoTenKH varchar(50),
     Password varchar(32),
     DiaChi varchar(200),
-    SoDienThoai varchar(10)
+    SoDienThoai varchar(10),
+    facebook_user_id varchar(50)
 );
 
 create table NhanVien(

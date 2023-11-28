@@ -1,5 +1,6 @@
 <?php
 session_start();
+include '../TONGQUAT/config.php';
 include '../TONGQUAT/fb_config.php';
 
 if (!$accessToken) {
@@ -20,9 +21,9 @@ try {
 }
 
 // Save user data to session
+$_SESSION['facebook_access_token'] = (string) $accessToken;
 $_SESSION['facebook_user_id'] = $user->getId();
 $_SESSION['facebook_user_name'] = $user->getName();
-$_SESSION['facebook_access_token'] = (string) $accessToken;
 
 header('Location: index.php');
 exit;

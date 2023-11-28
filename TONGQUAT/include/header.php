@@ -67,6 +67,19 @@ include '../TONGQUAT/fb_config.php';
                 </li>
                 <?php
                 if (isset($_SESSION['facebook_access_token'])) {
+                    $userId = $_SESSION['facebook_user_id'];
+                    $sqlCheck = mysqli_query($conn, "SELECT * FROM khachhang WHERE facebook_user_id = '$userId'");
+                    $row = mysqli_fetch_array($sqlCheck);
+
+                    $userName = $_SESSION['facebook_user_name'];
+                    if ($sqlCheck->num_rows == 0) {
+                        $sqlInsert = mysqli_query($conn, "INSERT INTO khachhang (HoTenKH, facebook_user_id) VALUES ('$userName','$userId')");
+                        if ($conn->query($sqlInsert) === TRUE) {
+                            echo "<script>alert('Đăng nhập thành công')</script>";
+                        } else {
+                            echo "<script>alert('Đăng nhập thành công')</script>" . $conn->error;
+                        }
+                    }
                 ?>
                     <li class="header__navbar-item header__navbar-item--separate">
                         <a href="../../KHACHHANG/index.php">
