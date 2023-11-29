@@ -12,13 +12,13 @@
                     <span id="header-hover">Tải ứng dụng</span>
                     <!-- Header QR code -->
                     <div class="header__qr">
-                        <img src="../../KHACHHANG/assets/img/qr/qr_code.png" alt="QR" class="header__qr-img">
+                        <img src="../assets/img/qr/qr_code.png" alt="QR" class="header__qr-img">
                         <div class="header__qr-apps">
                             <a href="" class="header__qr-link">
-                                <img src="../../KHACHHANG/assets/img/qr/google_play.png" alt="Google Play" class="header__qr-download-img">
+                                <img src="../assets/img/qr/google_play.png" alt="Google Play" class="header__qr-download-img">
                             </a>
                             <a href="" class="header__qr-link">
-                                <img src="../../KHACHHANG/assets/img/qr/app_store.png" alt="App Store" class="header__qr-download-img">
+                                <img src="../assets/img/qr/app_store.png" alt="App Store" class="header__qr-download-img">
                             </a>
                         </div>
                     </div>
@@ -46,13 +46,13 @@
                     <ul class="header__navbar-languages-menu">
                         <li class="header__navbar-language-item">
                             <a href="">
-                                <img class="header__navbar-language-img" src="../../KHACHHANG/assets/img/language/vietnam.png" alt="tieng-viet">
+                                <img class="header__navbar-language-img" src="../assets/img/language/vietnam.png" alt="tieng-viet">
                                 <span>Tiếng Việt</span>
                             </a>
                         </li>
                         <li class="header__navbar-language-item">
                             <a href="">
-                                <img class="header__navbar-language-img" src="../../KHACHHANG/assets/img/language/english.png" alt="english">
+                                <img class="header__navbar-language-img" src="../assets/img/language/english.png" alt="english">
                                 <span>English</span>
                             </a>
                         </li>
@@ -64,7 +64,7 @@
                     $sql = mysqli_query($conn, "SELECT * FROM khachhang WHERE MSKH='$id' ");
                     $row = mysqli_fetch_array($sql); ?>
                     <li class="header__navbar-item header__navbar-item--separate">
-                        <a href="../../KHACHHANG/index.php"><span style="color: #000; font-weight: bold; font-family: monospace;" id="header-hover" class="header__navbar-icon-link header__navbar-icon-link2">Hello!
+                        <a href="../index.php"><span style="color: #000; font-weight: bold; font-family: monospace;" id="header-hover" class="header__navbar-icon-link header__navbar-icon-link2">Hello!
                                 <?php if (isset($_SESSION['submit'])) {
                                     echo $_SESSION['submit'];
                                 } ?></span></a>
@@ -131,7 +131,7 @@
 
             <div class="header__logo hide-on-tablet">
                 <a href="../index.php" class="header__logo-link">
-                    <img class="header__logo-img" src="../../KHACHHANG/assets/img/logo/logo.png" alt="">
+                    <img class="header__logo-img" src="../assets/img/logo/logo.png" alt="">
                 </a>
             </div>
 
@@ -167,7 +167,7 @@
 
             <!-- Cart -->
             <div class="header__cart">
-                <a href="../../KHACHHANG/gio-hang.php"><i class="header__cart-icon fas fa-shopping-cart"></i></a>
+                <a href="../gio-hang.php"><i class="header__cart-icon fas fa-shopping-cart"></i></a>
             <?php
                 if (isset($_SESSION['cart'])) {
                     $tongSL = 0;

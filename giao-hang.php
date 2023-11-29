@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../TONGQUAT/config.php';
+include './TONGQUAT/config.php';
 ?>
 
 <?php
@@ -70,7 +70,7 @@ if (isset($cart_query)) {
 <body class="page">
     <!-- Page header -->
     <?php
-    require '../TONGQUAT/include/header.php';
+    require './TONGQUAT/include/header.php';
     ?>
 
     <!-- Page address -->
@@ -192,7 +192,7 @@ if (isset($cart_query)) {
 
     <!-- Page footer -->
     <?php
-    require '../TONGQUAT/include/footer.php';
+    require './TONGQUAT/include/footer.php';
     ?>
 
     <!---------------------- Javascript ---------------------->

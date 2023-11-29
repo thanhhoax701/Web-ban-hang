@@ -1,13 +1,13 @@
 <?php
 session_start();
-include '../../TONGQUAT/config.php';
+include '../TONGQUAT/config.php';
 ?>
 
 <?php
 // session_start();
 if (isset($_GET['dangxuat'])) {
     unset($_SESSION['dangnhap']);
-    header("location:../index.php");
+    header("location: ../index.php");
 }
 if (isset($_GET['login'])) {
     $dangxuat = $_GET['login'];
@@ -16,7 +16,7 @@ if (isset($_GET['login'])) {
 }
 if ($dangxuat == 'dangxuat') {
     session_destroy();
-    header('location:../index.php');
+    header('location: ../index.php');
 }
 ?>
 
@@ -89,7 +89,7 @@ $sql_chitiet = mysqli_query($conn, "SELECT * FROM hanghoa, hinhhh where hanghoa.
                             <?php
                             $row = mysqli_fetch_row($sql_chitiet);
                             ?>
-                            <img src="../../TONGQUAT/img_sp/<?php echo $row[8] ?>" alt="">
+                            <img src="../TONGQUAT/img_sp/<?php echo $row[8] ?>" alt="">
                         </div>
                         <div class="product__content-left--result hide"></div>
                     </div>
@@ -98,7 +98,7 @@ $sql_chitiet = mysqli_query($conn, "SELECT * FROM hanghoa, hinhhh where hanghoa.
                         while ($row_chitiet = mysqli_fetch_array($sql_chitiet)) {
                         ?>
                             <div class="product__content-left-small--image">
-                                <img src="../../TONGQUAT/img_sp/<?php echo $row_chitiet['TenHinh'] ?>" alt="">
+                                <img src="../TONGQUAT/img_sp/<?php echo $row_chitiet['TenHinh'] ?>" alt="">
                             </div>
                         <?php
                         }

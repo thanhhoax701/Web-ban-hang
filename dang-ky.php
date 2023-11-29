@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../TONGQUAT/config.php';
+include './TONGQUAT/config.php';
 ?>
 <?php
 // session_destroy();
@@ -46,7 +46,7 @@ if (isset($_POST['submit'])) {
 <body class="page">
     <!-- Page header -->
     <?php
-    require '../TONGQUAT/include/header.php';
+    require './TONGQUAT/include/header.php';
     ?>
 
     <!-- Page container -->
@@ -123,7 +123,7 @@ if (isset($_POST['submit'])) {
 
     <!-- Page footer -->
     <?php
-    require '../TONGQUAT/include/footer.php';
+    require './TONGQUAT/include/footer.php';
     ?>
 
     <!---------------------- Javascript ---------------------->

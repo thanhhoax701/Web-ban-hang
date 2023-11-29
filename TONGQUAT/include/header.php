@@ -1,6 +1,6 @@
 <?php
-include '../TONGQUAT/config.php';
-include '../TONGQUAT/fb_config.php';
+include './TONGQUAT/config.php';
+include './TONGQUAT/fb_config.php';
 ?>
 
 
@@ -82,7 +82,7 @@ include '../TONGQUAT/fb_config.php';
                     }
                 ?>
                     <li class="header__navbar-item header__navbar-item--separate">
-                        <a href="../../KHACHHANG/index.php">
+                        <a href="/index.php">
                             <span style="color: #000; font-weight: bold; font-family: monospace;" id="header-hover" class="header__navbar-icon-link header__navbar-icon-link2">Hello!
                                 <?php if (isset($_SESSION['facebook_user_name'])) {
                                     echo $_SESSION['facebook_user_name'];
@@ -100,7 +100,7 @@ include '../TONGQUAT/fb_config.php';
                     $row = mysqli_fetch_array($sql);
                 ?>
                     <li class="header__navbar-item header__navbar-item--separate">
-                        <a href="../../KHACHHANG/index.php">
+                        <a href="/index.php">
                             <span style="color: #000; font-weight: bold; font-family: monospace;" id="header-hover" class="header__navbar-icon-link header__navbar-icon-link2">Hello!
                                 <?php if (isset($_SESSION['submit'])) {
                                     echo $_SESSION['submit'];
@@ -175,7 +175,7 @@ include '../TONGQUAT/fb_config.php';
             </div>
 
             <input type="checkbox" hidden id="mobile-search-checkbox" class="header__search-checkbox">
-            <form action="../KHACHHANG/tim-kiem.php" method="POST" class="header__search">
+            <form action="/tim-kiem.php" method="POST" class="header__search">
                 <!-- Input search -->
                 <div class="header__search-input-wrap">
                     <input type="search" class="input-search" placeholder="Tìm kiếm sản phẩm" name="search_product" required>
@@ -207,7 +207,7 @@ include '../TONGQUAT/fb_config.php';
             <!-- Cart -->
             <div class="header__cart">
                 <div style="clear: both;"></div>
-                <a href="../KHACHHANG/gio-hang.php"><i class="header__cart-icon fas fa-shopping-cart"></i></a>
+                <a href="gio-hang.php"><i class="header__cart-icon fas fa-shopping-cart"></i></a>
                 <?php
                 if (isset($_SESSION['cart'])) {
                     $tongSL = 0;

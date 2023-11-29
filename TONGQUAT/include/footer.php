@@ -1,5 +1,5 @@
 <?php
-include '../TONGQUAT/config.php';
+include './TONGQUAT/config.php';
 ?>
 
 <!-- Page footer -->
@@ -19,8 +19,8 @@ include '../TONGQUAT/config.php';
                             ?>
                                 <div class="rate-height-items">
                                     <div class="rate-height-box-img">
-                                        <a class="tag-a" href="<?php echo "../KHACHHANG/chitietsp/chitiet.php" . "?id=" . $row_showSP['MSHH']; ?>">
-                                            <img style="width: 70;height: 70px;object-fit: cover;" class="product-selling-img" src="../TONGQUAT/img_sp/<?php echo $row_showSP['TenHinh'] ?>" alt="">
+                                        <a class="tag-a" href="<?php echo "./chitietsp/chitiet.php" . "?id=" . $row_showSP['MSHH']; ?>">
+                                            <img style="width: 70;height: 70px;object-fit: cover;" class="product-selling-img" src="./TONGQUAT/img_sp/<?php echo $row_showSP['TenHinh'] ?>" alt="">
                                         </a>
                                     </div>
                                     <div class="rate-height-right">
@@ -39,8 +39,8 @@ include '../TONGQUAT/config.php';
                                 $i++; ?>
                                 <div class="rate-height-items">
                                     <div class="rate-height-box-img">
-                                        <a class="tag-a" href="<?php echo "../KHACHHANG/chitietsp/chitiet.php" . "?id=" . $row_showSP['MSHH']; ?>">
-                                            <img style="width: 70;height: 70px;object-fit: cover;" class="product-selling-img" src="../TONGQUAT/img_sp/<?php echo $row_showSP['TenHinh'] ?>" alt="">
+                                        <a class="tag-a" href="<?php echo "./chitietsp/chitiet.php" . "?id=" . $row_showSP['MSHH']; ?>">
+                                            <img style="width: 70;height: 70px;object-fit: cover;" class="product-selling-img" src="./TONGQUAT/img_sp/<?php echo $row_showSP['TenHinh'] ?>" alt="">
                                         </a>
                                     </div>
                                     <div class="rate-height-right">
@@ -80,7 +80,7 @@ include '../TONGQUAT/config.php';
                         <div class="footer-item__header">THÔNG TIN LIÊN HỆ</div>
                         <div class="footer-item__list">
                             <a href="#" class="footer-item__item">
-                                ĐHCT - Ninh Kiều - Cần Thơ
+                                Ninh Kiều - Cần Thơ
                             </a>
                             <a href="#" class="footer-item__item">
                                 <i class="fas fa-mobile"></i> 0706839544
@@ -91,7 +91,7 @@ include '../TONGQUAT/config.php';
                             <a href="#" class="footer-item__item">
                                 <i class="fab fa-facebook"></i> Facebook
                             </a>
-                            <a href="#" class="footer-item__item">
+                            <a href="https://github.com/thanhhoax701" class="footer-item__item">
                                 <i class="fab fa-github"></i> Github
                             </a>
                         </div>

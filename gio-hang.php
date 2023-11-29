@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../TONGQUAT/config.php';
+include './TONGQUAT/config.php';
 ?>
 
 <?php
@@ -177,7 +177,7 @@ if (isset($_POST['themGioHang'])) {
 <body class="page">
     <!-- Page header -->
     <?php
-    require '../TONGQUAT/include/header.php';
+    require './TONGQUAT/include/header.php';
     ?>
 
     <!-- Page cart -->
@@ -223,7 +223,7 @@ if (isset($_POST['themGioHang'])) {
                                         <td>
                                             <p style="font-size: 17px; line-height: 1.5;"><?php echo $i ?></p>
                                         </td>
-                                        <td><img style="width: 100px; height: 100px; border-radius: unset;" src="../TONGQUAT/img_sp/<?php echo $cart_item['hinhSP'] ?>" alt=""></td>
+                                        <td><img style="width: 100px; height: 100px; border-radius: unset;" src="./TONGQUAT/img_sp/<?php echo $cart_item['hinhSP'] ?>" alt=""></td>
                                         <td>
                                             <p style="font-size: 17px; line-height: 1.5;"><?php echo $cart_item['tenSP'] ?></p>
                                         </td>
@@ -338,7 +338,7 @@ if (isset($_POST['themGioHang'])) {
 
     <!-- Page footer -->
     <?php
-    require '../TONGQUAT/include/footer.php';
+    require './TONGQUAT/include/footer.php';
     ?>
 
     <!---------------------- Javascript ---------------------->

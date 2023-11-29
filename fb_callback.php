@@ -1,7 +1,7 @@
 <?php
 session_start();
-include '../TONGQUAT/config.php';
-include '../TONGQUAT/fb_config.php';
+include './TONGQUAT/config.php';
+include './TONGQUAT/fb_config.php';
 
 if (!$accessToken) {
     header('Location: /dang-nhap.php');

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../TONGQUAT/config.php';
+include './TONGQUAT/config.php';
 ?>
 
 <?php
@@ -44,7 +44,7 @@ if ($dangxuat == 'dangxuat') {
 <body class="page">
     <!-- Page header -->
     <?php
-    require '../TONGQUAT/include/header.php';
+    require './TONGQUAT/include/header.php';
     ?>
 
     <!-- Page container -->
@@ -117,27 +117,27 @@ if ($dangxuat == 'dangxuat') {
                                         <div class="shop-reducing-items-box">
                                             <div class="product-type">
 
-                                                <a href="iphone" class="tag-a-sp">
+                                                <a href="" class="tag-a-sp">
                                                     <span>iPhone</span>
                                                 </a>
 
-                                                <a href="samsung" class="tag-a-sp">
+                                                <a href="" class="tag-a-sp">
                                                     <span>Samsung</span>
                                                 </a>
 
-                                                <a href="oppo" class="tag-a-sp">
+                                                <a href="" class="tag-a-sp">
                                                     <span>Oppo</span>
                                                 </a>
 
-                                                <a href="vivo" class="tag-a-sp">
+                                                <a href="" class="tag-a-sp">
                                                     <span>ViVo</span>
                                                 </a>
 
-                                                <a href="xiaomi" class="tag-a-sp">
+                                                <a href="" class="tag-a-sp">
                                                     <span>Xiaomi</span>
                                                 </a>
 
-                                                <a href="realme" class="tag-a-sp">
+                                                <a href="" class="tag-a-sp">
                                                     <span>Realme</span>
                                                 </a>
                                             </div>
@@ -159,7 +159,7 @@ if ($dangxuat == 'dangxuat') {
                                                 <div class="col l-4 m-4 c-6">
                                                     <div class="home-product-item" style="margin-bottom: 15px;">
                                                         <a class="home-product-item__link" href="<?php echo "./chitietsp/chitiet.php" . "?id=" . $row_showSP['MSHH']; ?>">
-                                                            <img src="../TONGQUAT/img_sp/<?php echo $row_showSP['TenHinh'] ?>" alt="">
+                                                            <img src="./TONGQUAT/img_sp/<?php echo $row_showSP['TenHinh'] ?>" alt="">
                                                             <h4 class="home-product-item__name"><?php echo $row_showSP['TenHH'] ?></h4>
                                                             <div class="home-product-item__price">
                                                                 <span class="home-product-item__price-old"><?php echo number_format($row_showSP['Gia'] * 100 / 90,0,',','.') ?><b>&#8363;</b></span>
@@ -214,7 +214,7 @@ if ($dangxuat == 'dangxuat') {
                                                 <div class="col l-4 m-4 c-6">
                                                     <div class="home-product-item">
                                                         <a class="home-product-item__link" href="<?php echo "./chitietsp/chitiet.php" . "?id=" . $row_showSP['MSHH']; ?>">
-                                                            <img src="../TONGQUAT/img_sp/<?php echo $row_showSP['TenHinh'] ?>" alt="">
+                                                            <img src="./TONGQUAT/img_sp/<?php echo $row_showSP['TenHinh'] ?>" alt="">
                                                             <h4 class="home-product-item__name"><?php echo $row_showSP['TenHH'] ?></h4>
                                                             <div class="home-product-item__price">
                                                                 <span class="home-product-item__price-old"><?php echo number_format($row_showSP['Gia'] * 100 / 90,0,',','.') ?><b>&#8363;</b></span>
@@ -288,16 +288,16 @@ if ($dangxuat == 'dangxuat') {
                                         <span class="shop-reducing-title">HÃNG SẢN XUẤT</span>
                                         <div class="shop-reducing-items-box">
                                             <div class="product-type">
-                                                <a href="iphone" class="tag-a-sp">
+                                                <a href="" class="tag-a-sp">
                                                     <span>iPad</span>
                                                 </a>
-                                                <a href="samsung" class="tag-a-sp">
+                                                <a href="" class="tag-a-sp">
                                                     <span>Samsung</span>
                                                 </a>
-                                                <a href="lenovo" class="tag-a-sp">
+                                                <a href="" class="tag-a-sp">
                                                     <span>Lenovo</span>
                                                 </a>
-                                                <a href="huawei" class="tag-a-sp">
+                                                <a href="" class="tag-a-sp">
                                                     <span>Huawei</span>
                                                 </a>
                                             </div>
@@ -318,7 +318,7 @@ if ($dangxuat == 'dangxuat') {
                                                 <div class="col l-4 m-4 c-6">
                                                     <div class="home-product-item">
                                                         <a class="home-product-item__link" href="<?php echo "./chitietsp/chitiet.php" . "?id=" . $row_showSP['MSHH']; ?>">
-                                                            <img src="../TONGQUAT/img_sp/<?php echo $row_showSP['TenHinh'] ?>" alt="">
+                                                            <img src="./TONGQUAT/img_sp/<?php echo $row_showSP['TenHinh'] ?>" alt="">
                                                             <h4 class="home-product-item__name"><?php echo $row_showSP['TenHH'] ?></h4>
                                                             <div class="home-product-item__price">
                                                                 <span class="home-product-item__price-old"><?php echo number_format($row_showSP['Gia'] * 100 / 90,0,',','.') ?><b>&#8363;</b></span>
@@ -372,7 +372,7 @@ if ($dangxuat == 'dangxuat') {
                                                 <div class="col l-4 m-4 c-6">
                                                     <div class="home-product-item">
                                                         <a class="home-product-item__link" href="<?php echo "./chitietsp/chitiet.php" . "?id=" . $row_showSP['MSHH']; ?>">
-                                                            <img src="../TONGQUAT/img_sp/<?php echo $row_showSP['TenHinh'] ?>" alt="">
+                                                            <img src="./TONGQUAT/img_sp/<?php echo $row_showSP['TenHinh'] ?>" alt="">
                                                             <h4 class="home-product-item__name"><?php echo $row_showSP['TenHH'] ?></h4>
                                                             <div class="home-product-item__price">
                                                                 <span class="home-product-item__price-old"><?php echo number_format($row_showSP['Gia'] * 100 / 90,0,',','.') ?><b>&#8363;</b></span>
@@ -474,7 +474,7 @@ if ($dangxuat == 'dangxuat') {
                                                     <div class="col l-4 m-4 c-6 product-selling-items shop-cuahang-items" style="">
                                                         <div class="home-product-item">
                                                             <a class="home-product-item__link" href="<?php echo "./chitietsp/chitiet.php" . "?id=" . $row_showSP['MSHH']; ?>">
-                                                                <img src="../TONGQUAT/img_sp/<?php echo $row_showSP['TenHinh'] ?>" alt="">
+                                                                <img src="./TONGQUAT/img_sp/<?php echo $row_showSP['TenHinh'] ?>" alt="">
                                                                 <h4 class="home-product-item__name"><?php echo $row_showSP['TenHH'] ?></h4>
                                                                 <div class="home-product-item__price">
                                                                     <span class="home-product-item__price-old"><?php echo number_format($row_showSP['Gia'] * 100 / 90,0,',','.') ?><b>&#8363;</b></span>
@@ -531,7 +531,7 @@ if ($dangxuat == 'dangxuat') {
                                                     <div class="col l-4 m-4 c-6 product-selling-items shop-cuahang-items">
                                                         <div class="home-product-item">
                                                             <a class="home-product-item__link" href="<?php echo "./chitietsp/chitiet.php" . "?id=" . $row_showSP['MSHH']; ?>">
-                                                                <img src="../TONGQUAT/img_sp/<?php echo $row_showSP['TenHinh'] ?>" alt="">
+                                                                <img src="./TONGQUAT/img_sp/<?php echo $row_showSP['TenHinh'] ?>" alt="">
                                                                 <h4 class="home-product-item__name"><?php echo $row_showSP['TenHH'] ?></h4>
                                                                 <div class="home-product-item__price">
                                                                     <span class="home-product-item__price-old"><?php echo number_format($row_showSP['Gia'] * 100 / 90,0,',','.') ?><b>&#8363;</b></span>
@@ -588,7 +588,7 @@ if ($dangxuat == 'dangxuat') {
                                                     <div class="col l-4 m-4 c-6 product-selling-items shop-cuahang-items">
                                                         <div class="home-product-item">
                                                             <a class="home-product-item__link" href="<?php echo "./chitietsp/chitiet.php" . "?id=" . $row_showSP['MSHH']; ?>">
-                                                                <img src="../TONGQUAT/img_sp/<?php echo $row_showSP['TenHinh'] ?>" alt="">
+                                                                <img src="./TONGQUAT/img_sp/<?php echo $row_showSP['TenHinh'] ?>" alt="">
                                                                 <h4 class="home-product-item__name"><?php echo $row_showSP['TenHH'] ?></h4>
                                                                 <div class="home-product-item__price">
                                                                     <span class="home-product-item__price-old"><?php echo number_format($row_showSP['Gia'] * 100 / 90,0,',','.') ?><b>&#8363;</b></span>
@@ -641,7 +641,7 @@ if ($dangxuat == 'dangxuat') {
 
     <!-- Page footer -->
     <?php
-    require '../TONGQUAT/include/footer.php';
+    require './TONGQUAT/include/footer.php';
     ?>
 
 

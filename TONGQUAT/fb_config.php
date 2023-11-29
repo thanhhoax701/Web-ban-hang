@@ -1,5 +1,5 @@
 <?php
-require '../TONGQUAT/vendor/autoload.php';
+require './TONGQUAT/vendor/autoload.php';
 
 $fb = new Facebook\Facebook([
     'app_id' => '306351439064429',

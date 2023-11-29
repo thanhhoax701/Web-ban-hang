@@ -1,13 +1,13 @@
 <?php
 session_start();
-include '../TONGQUAT/config.php';
+include './TONGQUAT/config.php';
 ?>
 <?php
 
 // session_start();
 if (isset($_GET['dangxuat'])) {
     unset($_SESSION['dangnhap']);
-    header("location:index.php");
+    header("location: index.php");
 }
 if (isset($_GET['login'])) {
     $dangxuat = $_GET['login'];
@@ -45,7 +45,7 @@ if ($dangxuat == 'dangxuat') {
 <body class="page">
     <!-- Page header -->
     <?php
-    require '../TONGQUAT/include/header.php';
+    require './TONGQUAT/include/header.php';
     ?>
 
     <!-- Page container -->
@@ -175,7 +175,7 @@ if ($dangxuat == 'dangxuat') {
                         <div class="col l-3 m-6 c-6">
                             <div class="home-product-item" style="margin-bottom: 15px;">
                                 <a class="home-product-item__link" href="<?php echo "./chitietsp/chitiet.php" . "?id=" . $row_showSP['MSHH']; ?>">
-                                    <img src="../TONGQUAT/img_sp/<?php echo $row_showSP['TenHinh'] ?>" alt="">
+                                    <img src="./TONGQUAT/img_sp/<?php echo $row_showSP['TenHinh'] ?>" alt="">
                                     <h4 class="home-product-item__name"><?php echo $row_showSP['TenHH'] ?></h4>
                                     <div class="home-product-item__price">
                                         <span class="home-product-item__price-old"><?php echo number_format($row_showSP['Gia'] * 100 / 90,0,',','.') ?><b>&#8363;</b></span>
@@ -260,7 +260,7 @@ if ($dangxuat == 'dangxuat') {
 
     <!-- Page footer -->
     <?php
-    require '../TONGQUAT/include/footer.php';
+    require './TONGQUAT/include/footer.php';
     ?>
 
     <!---------------------- Javascript ---------------------->
